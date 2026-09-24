@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobDerv - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/Front-End/css/style.css">
+  <link rel="icon" href="/Front-End/img/jdd.png" type="image/x-icon">
+  <script src="/Front-End/js/script.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">JD</span><span>Job<span>Dery</span></span></a>
+
+    <nav>
+      <a class="nav-item active" href="#dashboard"><span>▦</span> Dashboard</a>
+      <a class="nav-item" href="#jobs"><span>⌕</span> Procurar vagas</a>
+      <a class="nav-item" href="#profile"><span>♙</span> Perfil</a>
+      <a class="nav-item" href="#applications"><span>▤</span> Candidaturas</a>
+      <a class="nav-item" href="#interviews"><span>☷</span> Entrevistas</a>
+      <a class="nav-item" href="#messages"><span>▣</span> Mensagens</a>
+      <a class="nav-item" href="#saved"><span>♡</span> Vagas guardadas</a>
+      <a class="nav-item" href="#analytics"><span>⌁</span> Analytics</a>
+      <a class="nav-item" href="#settings"><span>⚙</span> Definições</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle" type="button">
+      <span id="themeIcon">☾</span><span id="themeText">Dark mode</span>
+    </button>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <button id="mobileMenu" class="mobile-menu">☰</button>
+      <div class="searchbar">
+        <div class="search-input"><span>⌕</span><input id="jobSearch" placeholder="Cargo, palavra-chave ou empresa"></div>
+        <div class="search-input location"><span>⌖</span><input id="locationSearch" placeholder="Localização"></div>
+        <button id="searchBtn" class="primary">Procurar vagas</button>
+      </div>
+      <div class="user">
+        <span class="bell">♧<b>1</b></span>
+        <div class="avatar">AV</div>
+        <strong>Aderito</strong>
+        <span>⌄</span>
+      </div>
+    </header>
+
+    <section class="content" id="dashboard">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">PAINEL DE CANDIDATURAS</p>
+          <h1>Dashboard</h1>
+          <h2>Bem-vindo de volta, Aderito!</h2>
+          <p>Acompanha vagas, candidaturas e entrevistas num único lugar.</p>
+        </div>
+        <div class="heading-actions">
+          <select><option>Todas as vagas</option><option>Estágio</option><option>Júnior</option><option>Sênior</option></select>
+          <button class="outline">☷ Filtros</button>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <section class="jobs-panel">
+          <div class="section-title">
+            <div><h3>Vagas recomendadas</h3><p>Oportunidades alinhadas com o teu perfil.</p></div>
+            <button class="link-btn">Ver todas →</button>
+          </div>
+
+          <div class="job-cards" id="jobCards">
+            <article class="job-card" data-title="software developer javascript">
+              <div class="card-top"><div class="company-logo google">J</div><button class="dots">•••</button></div>
+              <h3>Junior Software Developer</h3>
+              <p class="company">TechNova</p>
+              <p>Lisboa · Híbrido · Full-time</p>
+              <h4>Skills</h4>
+              <div class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Git</span></div>
+              <p class="place">⌖ Lisboa, Portugal</p>
+              <div class="status applied">✓ Compatível 88%</div>
+              <div class="card-actions"><button class="outline save-btn">Guardar</button><button class="primary apply-btn">Ver/Candidatar</button></div>
+            </article>
+
+            <article class="job-card" data-title="frontend developer react javascript">
+              <div class="card-top"><div class="company-logo airbnb">F</div><button class="dots">•••</button></div>
+              <h3>Frontend Developer Intern</h3>
+              <p class="company">Future Labs</p>
+              <p>Oeiras · Híbrido · Estágio</p>
+              <h4>Skills</h4>
+              <div class="tags"><span>React</span><span>JavaScript</span><span>REST API</span></div>
+              <p class="place">⌖ Oeiras, Portugal</p>
+              <div class="status applied">✓ Compatível 82%</div>
+              <div class="card-actions"><button class="outline save-btn">Guardar</button><button class="primary apply-btn">Ver/Candidatar</button></div>
+            </article>
+
+            <article class="job-card" data-title="full stack php mysql javascript">
+              <div class="card-top"><div class="company-logo spotify">S</div><button class="dots">•••</button></div>
+              <h3>Full Stack Trainee</h3>
+              <p class="company">SoftWorks</p>
+              <p>Lisboa · Presencial · Estágio</p>
+              <h4>Skills</h4>
+              <div class="tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span></div>
+              <p class="place">⌖ Lisboa, Portugal</p>
+              <div class="status pending">○ Ainda não enviado</div>
+              <div class="card-actions"><button class="outline save-btn">Guardar</button><button class="primary apply-btn">Ver/Candidatar</button></div>
+            </article>
+          </div>
+
+          <div class="listing-box" id="jobs">
+            <div class="section-title"><div><h3>Job Listings</h3><p>Lista de vagas recolhidas pelo sistema.</p></div><button class="outline">▽ Filtros</button></div>
+            <div class="listing-row"><div><strong>Software Engineer Intern</strong><p>Lisboa · Python · FastAPI</p></div><span class="badge">Nova</span></div>
+            <div class="listing-row"><div><strong>Junior Web Developer</strong><p>Lisboa · JavaScript · PHP</p></div><span class="badge neutral">Guardada</span></div>
+          </div>
+        </section>
+
+        <aside class="analytics-panel">
+          <div class="panel chart-panel">
+            <div class="panel-title"><div><h3>Candidaturas — últimos 30 dias</h3><p>Enviadas vs. respostas</p></div><span>•••</span></div>
+            <canvas id="applicationsChart"></canvas>
+          </div>
+
+          <div class="panel chart-panel small">
+            <div class="panel-title"><h3>Estado das candidaturas</h3><span>•••</span></div>
+            <div class="donut-wrap">
+              <canvas id="statusChart"></canvas>
+              <div class="legend">
+                <span><i class="dot d1"></i> Enviadas 60%</span>
+                <span><i class="dot d2"></i> Entrevista 20%</span>
+                <span><i class="dot d3"></i> Resposta 15%</span>
+                <span><i class="dot d4"></i> Recusadas 5%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel summary">
+            <div><strong>24</strong><span>Candidaturas</span></div>
+            <div><strong>6</strong><span>Entrevistas</span></div>
+            <div><strong>12</strong><span>Guardadas</span></div>
+          </div>
+
+          <div class="panel filters">
+            <div class="panel-title"><h3>Automação diária</h3><span class="live">ATIVA</span></div>
+            <label><span>Pesquisar vagas</span><input type="checkbox" checked></label>
+            <label><span>Evitar duplicados</span><input type="checkbox" checked></label>
+            <label><span>Personalizar carta</span><input type="checkbox" checked></label>
+            <label><span>Revisão antes do envio</span><input type="checkbox" checked></label>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" class="toast">Vaga guardada.</div>
+<script src="/Front-End/js/script.js"></script>
+</body>
+</html>

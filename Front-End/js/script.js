@@ -3,6 +3,9 @@ const themeToggle = document.getElementById("themeToggle");
 const themeText = document.getElementById("themeText");
 const themeIcon = document.getElementById("themeIcon");
 
+// Varivaeis 
+
+
 function setTheme(theme){
   root.setAttribute("data-theme", theme);
   localStorage.setItem("jobderv-theme", theme);
@@ -66,3 +69,27 @@ function initCharts(){
   });
 }
 initCharts();
+
+// Parte da Conectividade com o backend
+
+const API_URL = "http://127.0.0.1:8000";
+
+async function carregarVagas() {
+    try {
+        const resposta = await fetch(`${API_URL}/api/vagas/`);
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao buscar vagas");
+        }
+
+        const vagas = await resposta.json();
+
+        console.log("Vagas recebidas da API:");
+        console.log(vagas);
+
+    } catch (erro) {
+        console.error("Erro ao carregar vagas:", erro);
+    }
+}
+
+carregarVagas();

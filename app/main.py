@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from app.database import Base, engine
 from app.models import Empresa, Vaga, Candidatura, Documento
@@ -8,7 +10,7 @@ from app.routes.candidaturas import router as candidaturas_router
 from app.routes.documentos import router as documentos_router
 
 
-
+# Add CORS middleware
 # Cria as tabelas na base de dados caso ainda não existam
 Base.metadata.create_all(bind=engine)
 
@@ -19,6 +21,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Rotas
 app.include_router(empresas_router)

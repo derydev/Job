@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from datetime import datetime
+from app.models.documento import Documento
 
 from app.database import get_db
 from app.models.candidatura import Candidatura
@@ -28,6 +29,7 @@ def criar_candidatura(
     db: Session = Depends(get_db)
 ):
     # Verificar se a vaga existe
+    
     vaga = db.query(Vaga).filter(
         Vaga.id == dados.vaga_id
     ).first()
@@ -38,8 +40,22 @@ def criar_candidatura(
             detail="Vaga não encontrada"
         )
 
+    # Verificar o documento, caso tenha sido informado
+    if dados.documento_id is not None:
+        documento = db.query(Documento).filter(
+            Documento.id == dados.documento_id
+        ).first()
+
+        if not documento:
+            raise HTTPException(
+                status_code=404,
+                detail="Documento não encontrado"
+            )
+
+    # Criar candidatura
     candidatura = Candidatura(
         vaga_id=dados.vaga_id,
+        documento_id=dados.documento_id,
         estado="preparada",
         cv=dados.cv,
         carta=dados.carta,

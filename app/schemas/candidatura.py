@@ -5,6 +5,7 @@ from datetime import datetime
 
 class CandidaturaCreate(BaseModel):
     vaga_id: int
+    documento_id: Optional[int] = None
     cv: Optional[str] = None
     carta: Optional[str] = None
     tipo_envio: Optional[str] = None
@@ -13,6 +14,7 @@ class CandidaturaCreate(BaseModel):
 class CandidaturaResponse(BaseModel):
     id: int
     vaga_id: int
+    documento_id: Optional[int] = None
     estado: str
     cv: Optional[str] = None
     carta: Optional[str] = None

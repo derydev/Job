@@ -82,3 +82,10 @@ async def upload_cv(
         "caminho": documento.caminho,
         "criado_em": documento.criado_em
     }
+@router.get("/")
+def listar_documentos(
+    db: Session = Depends(get_db)
+):
+    documentos = db.query(Documento).all()
+
+    return documentos
